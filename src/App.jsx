@@ -3,23 +3,23 @@ import BookList from './BookList';
 import './App.css';
 
 function App() {
-  // State for individual inputs
+  
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [summary, setSummary] = useState('');
 
-  // State for the collection of books
+  
   const [books, setBooks] = useState([]);
 
   const handleAddBook = (e) => {
     e.preventDefault();
 
-    // Basic validation to ensure fields aren't empty
+
     if (!title || !author || !summary) return;
 
     const newBook = { title, author, summary };
 
-    // Update the array and clear inputs
+    
     setBooks([...books, newBook]);
     setTitle('');
     setAuthor('');
@@ -53,7 +53,6 @@ function App() {
 
       <hr />
 
-      {/* Passing the array as props to the child component */}
       <BookList books={books} />
     </div>
   );
