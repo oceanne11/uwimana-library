@@ -3,34 +3,68 @@ import BookList from './BookList';
 import './App.css';
 
 function App() {
-  // State for individual inputs
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [summary, setSummary] = useState('');
-
-  // State for the collection of books
+  const [message, setMessage] = useState('');
   const [books, setBooks] = useState([]);
+  
+  // Track if we are currently editing a book
+  const [editingId, setEditingId] = useState(null);
 
-  const handleAddBook = (e) => {
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevents page reload
 
-    // Basic validation to ensure fields aren't empty
-    if (!title || !author || !summary) return;
+    if (!title || !author || !summary) {
+      setMessage("Please fill out all fields before submitting");
+      return;
+    }
 
-    const newBook = { title, author, summary };
+    if (editingId) {
+      // EDIT LOGIC
+      const updatedBooks = books.map((book) =>
+        book.id === editingId ? { ...book, title, author, summary } : book
+      );
+      setBooks(updatedBooks);
+      setMessage("Book Updated!");
+      setEditingId(null);
+    } else {
+      // ADD LOGIC
+      const newBook = { 
+        id: Date.now(), // Unique ID for tracking
+        title, 
+        author, 
+        summary 
+      };
+      setBooks([...books, newBook]);
+      setMessage("Book Added!");
+    }
 
-    // Update the array and clear inputs
-    setBooks([...books, newBook]);
+    // Clear Inputs
     setTitle('');
     setAuthor('');
     setSummary('');
+  };
+
+  const deleteBook = (id) => {
+    const filteredBooks = books.filter(book => book.id !== id);
+    setBooks(filteredBooks);
+    setMessage("Book Deleted");
+  };
+
+  const startEdit = (book) => {
+    setTitle(book.title);
+    setAuthor(book.author);
+    setSummary(book.summary);
+    setEditingId(book.id);
+    setMessage("Editing book...");
   };
 
   return (
     <div className="container">
       <h1>Uwimana's Library</h1>
       
-      <form onSubmit={handleAddBook} className="book-form">
+      <form onSubmit={handleSubmit} className="book-form">
         <input 
           type="text" 
           placeholder="Book Title" 
@@ -48,13 +82,30 @@ function App() {
           value={summary} 
           onChange={(e) => setSummary(e.target.value)} 
         />
-        <button type="submit">Add Book</button>
+        <button type="submit">
+          {editingId ? "Update Book" : "Add Book"}
+        </button>
+        
+        {editingId && (
+          <button type="button" onClick={() => {
+            setEditingId(null);
+            setTitle('');
+            setAuthor('');
+            setSummary('');
+          }}>Cancel Edit</button>
+        )}
+
+        {message && <p className='feedback0'>{message}</p>}
       </form>
 
       <hr />
 
-      {/* Passing the array as props to the child component */}
-      <BookList books={books} />
+      {/* Pass the functions down as props */}
+      <BookList 
+        books={books} 
+        onDelete={deleteBook} 
+        onEdit={startEdit} 
+      />
     </div>
   );
 }

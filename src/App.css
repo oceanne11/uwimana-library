@@ -29,7 +29,6 @@ h1 {
   font-size: 3rem;
   margin-bottom: 2rem;
   background: linear-gradient(to right, #646cff, #9f64ff);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -111,4 +110,31 @@ h1 {
 
 .book-item strong {
   color: var(--text-main);
+}
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.book-actions button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.edit-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
