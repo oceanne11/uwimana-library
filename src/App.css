@@ -1,4 +1,4 @@
-/* Base Layout */
+
 :root {
   --primary: #646cff;
   --bg-dark: #1a1a1a;
@@ -7,21 +7,19 @@
   --text-dim: #a1a1a1;
 }
 
-/* Update these specific sections in App.css */
-
 body {
   background-color: var(--bg-dark);
   color: var(--text-main);
   font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
-  display: block; /* Change from flex to block */
+  display: block;
 }
 
 .container {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto; /* Centers the container horizontally */
-  padding: 4rem 2rem; /* Adds space at the very top */
+  margin: 0 auto; 
+  padding: 4rem 2rem;
   text-align: center;
 }
 
@@ -32,7 +30,7 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
-/* Form Styling */
+
 .book-form {
   display: flex;
   flex-direction: column;
@@ -75,7 +73,6 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* List Styling */
 .book-list ul {
   list-style: none;
   padding: 0;
@@ -111,6 +108,7 @@ h1 {
 .book-item strong {
   color: var(--text-main);
 }
+<<<<<<< HEAD
 .book-item {
   display: flex;
   justify-content: space-between;
@@ -138,3 +136,5 @@ h1 {
   border: none;
   border-radius: 4px;
 }
+=======
+>>>>>>> fd1f1fbf77be125306d937ce206da73390b5e31f
