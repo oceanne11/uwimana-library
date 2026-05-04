@@ -108,7 +108,7 @@ h1 {
 .book-item strong {
   color: var(--text-main);
 }
-<<<<<<< HEAD
+
 .book-item {
   display: flex;
   justify-content: space-between;
@@ -136,5 +136,4 @@ h1 {
   border: none;
   border-radius: 4px;
 }
-=======
->>>>>>> fd1f1fbf77be125306d937ce206da73390b5e31f
+

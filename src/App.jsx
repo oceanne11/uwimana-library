@@ -3,36 +3,26 @@ import BookList from './BookList';
 import './App.css';
 
 function App() {
-<<<<<<< HEAD
+
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [summary, setSummary] = useState('');
   const [message, setMessage] = useState('');
-=======
-  
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [summary, setSummary] = useState('');
-
-  
->>>>>>> fd1f1fbf77be125306d937ce206da73390b5e31f
   const [books, setBooks] = useState([]);
-  
-  // Track if we are currently editing a book
   const [editingId, setEditingId] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevents page reload
 
-<<<<<<< HEAD
+
     if (!title || !author || !summary) {
       setMessage("Please fill out all fields before submitting");
       return;
     }
-=======
+
 
     if (!title || !author || !summary) return;
->>>>>>> fd1f1fbf77be125306d937ce206da73390b5e31f
+
 
     if (editingId) {
       // EDIT LOGIC
@@ -54,12 +44,11 @@ function App() {
       setMessage("Book Added!");
     }
 
-<<<<<<< HEAD
     // Clear Inputs
-=======
+
     
     setBooks([...books, newBook]);
->>>>>>> fd1f1fbf77be125306d937ce206da73390b5e31f
+
     setTitle('');
     setAuthor('');
     setSummary('');
@@ -119,16 +108,16 @@ function App() {
 
       <hr />
 
-<<<<<<< HEAD
+
       {/* Pass the functions down as props */}
       <BookList 
         books={books} 
         onDelete={deleteBook} 
         onEdit={startEdit} 
       />
-=======
+
       <BookList books={books} />
->>>>>>> fd1f1fbf77be125306d937ce206da73390b5e31f
+
     </div>
   );
 }
